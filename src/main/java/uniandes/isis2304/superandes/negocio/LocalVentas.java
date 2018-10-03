@@ -1,9 +1,6 @@
 package uniandes.isis2304.superandes.negocio;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class LocalVentas {
+public class LocalVentas implements VOLocalVentas{
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -22,6 +19,16 @@ public class LocalVentas {
 	 * La capacidad máxima que tiene el local de ventas.
 	 */
 	private double capacidadMaxima;
+	
+	/**
+	 *  El id de la sucursal asignada a la orden.
+	 */
+	private String dirSucursal;
+	
+	/**
+	 *  El id de la sucursal asignada a la orden.
+	 */
+	private String ciudadSucursal;
 
 
 	/* ****************************************************************
@@ -32,21 +39,45 @@ public class LocalVentas {
      */
 	public LocalVentas() 
     {
-    		this.cantidadDeCajas = 0;
+		this.id = 0;
+		this.cantidadDeCajas = 0;
 		this.capacidadMaxima = 0;
-	}
-	
-	/**
-	 * Constructor con valores
-	 * @param cantidadDeCajas - El cantidadDeCajas de la categoría
-	 * @param capacidadMaxima - La descripción de la categoría.
-	 */
-    public LocalVentas(int cantidadDeCajas, double capacidadMaxima) 
-    {
-    		this.cantidadDeCajas = cantidadDeCajas;
-		this.capacidadMaxima = capacidadMaxima;
+		this.dirSucursal = "";
+		this.ciudadSucursal = "";
 	}
 
+
+	/**
+	 * Constructor con valores
+	 * @param id - El id del local de ventas.
+	 * @param cantidadDeCajas - El cantidadDeCajas de la categoría
+	 * @param capacidadMaxima - La descripción de la categoría.
+	 * @param dirSucursal - La direccion de la sucursal a la que pertenece el local.
+	 */
+    public LocalVentas(long id, int cantidadDeCajas, double capacidadMaxima, String dirSucursal, String ciudadSucursal) 
+    {
+		this.id = id;
+    		this.cantidadDeCajas = cantidadDeCajas;
+		this.capacidadMaxima = capacidadMaxima;
+		this.dirSucursal = dirSucursal;
+		this.ciudadSucursal = ciudadSucursal;
+	}
+
+	
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	/**
 	 * @return El cantidadDeCajas de la categoria
 	 */
@@ -69,11 +100,40 @@ public class LocalVentas {
 		this.capacidadMaxima = capacidadMaxima;
 	}
     
+	/**
+	 * @return the dirSucursal
+	 */
+	public String getDirSucursal() {
+		return dirSucursal;
+	}
+
+	/**
+	 * @param dirSucursal the dirSucursal to set
+	 */
+	public void setDirSucursal(String dirSucursal) {
+		this.dirSucursal = dirSucursal;
+	}
+	
+	/**
+	 * @return the ciudadSucursal
+	 */
+	public String getCiudadSucursal() {
+		return ciudadSucursal;
+	}
+
+	/**
+	 * @param ciudadSucursal the ciudadSucursal to set
+	 */
+	public void setCiudadSucursal(String ciudadSucursal) {
+		this.ciudadSucursal = ciudadSucursal;
+	}
+
+
 	@Override
 	/**
-	 * @return Una cadena de caracteres con todos los atributos de la bodega.
+	 * @return Una cadena de caracteres con todos los atributos del local de ventas.
 	 */
 	public String toString() {
-		return "Categoria [cantidadDeCajas=" + cantidadDeCajas + ", capacidadMaxima=" + capacidadMaxima + "]";
+		return "Categoria [cantidadDeCajas=" + cantidadDeCajas + ", capacidadMaxima=" + capacidadMaxima + ", dirSucursal" + dirSucursal + "]";
 	}
 }

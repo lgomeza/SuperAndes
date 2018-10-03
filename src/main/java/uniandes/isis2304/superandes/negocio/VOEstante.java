@@ -1,6 +1,5 @@
 package uniandes.isis2304.superandes.negocio;
 
-import java.util.List;
 
 public interface VOEstante {
 	/**
@@ -11,21 +10,27 @@ public interface VOEstante {
     /**
 	 * @return La capacidad del estante en peso.
 	 */
-	public Double getCapacidad();
+	public double getCapacidad();
 
 	/**
 	 * @return Cuanto espacio de la capacidad se encuentra ocupado.
 	 */
-	public Double getOcupacion();
+	public double getOcupacion();
 
 	/**
 	 * @return El tipo de producto que se almacena en este estante.
 	 */
 	public String getTipoProducto();
+	
 	/**
-	 * @return Los productos guardados en el estante.
+	 * @return the dirSucursal
 	 */
-	public List<Producto> getProductos();
+	public String getDirSucursal();
+	
+	/**
+	 * @return the ciudadSucursal
+	 */
+	public String getCiudadSucursal();
 
 	@Override
 	/**

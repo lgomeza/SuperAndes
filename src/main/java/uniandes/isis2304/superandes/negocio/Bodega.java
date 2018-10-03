@@ -1,8 +1,5 @@
 package uniandes.isis2304.superandes.negocio;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Bodega implements VOBodega{
 	/* ****************************************************************
 	 * 			Atributos
@@ -28,9 +25,14 @@ public class Bodega implements VOBodega{
 	private String tipoProducto;
 	
 	/**
-	 * El tipo de producto que se almacena en esta bodega.
+	 *  El id de la sucursal asignada a la orden.
 	 */
-	private List<Producto> productos;
+	private String dirSucursal;
+	
+	/**
+	 *  El id de la sucursal asignada a la orden.
+	 */
+	private String ciudadSucursal;
 
 
 	/* ****************************************************************
@@ -45,7 +47,8 @@ public class Bodega implements VOBodega{
 		this.capacidad = 0;
 		this.ocupacion = 0;
 		this.tipoProducto = "";
-		this.productos = new ArrayList<Producto>();
+		this.dirSucursal = "";
+		this.ciudadSucursal = "";
 	}
 	
 	/**
@@ -54,14 +57,16 @@ public class Bodega implements VOBodega{
 	 * @param capacidad - La capacidad en peso de la bodega.
 	 * @param ocupacion - Cuanto espacio de la capacidad total se encuentra ocupado.
 	 * @param tipoProducto - El tipo de producto que se almacena en esta bodega.
+	 * @param dirSucursal - El id de la sucursal a la que pertenece el estante.
 	 */
-    public Bodega(long id, Double capacidad, Double ocupacion, String tipoProducto, List<Producto> productos) 
+    public Bodega(long id, Double capacidad, Double ocupacion, String tipoProducto, String dirSucursal, String ciudadSucursal) 
     {
     		this.id = id;
 		this.capacidad = capacidad;
 		this.ocupacion = ocupacion;
 		this.tipoProducto = tipoProducto;
-		this.productos = productos;
+		this.dirSucursal = dirSucursal;
+		this.ciudadSucursal = ciudadSucursal;
 	}
     
 
@@ -79,7 +84,7 @@ public class Bodega implements VOBodega{
     /**
 	 * @return La capacidad de la bodega en peso.
 	 */
-	public Double getCapacidad() {
+	public double getCapacidad() {
 		return capacidad;
 	}
 
@@ -90,7 +95,7 @@ public class Bodega implements VOBodega{
 	/**
 	 * @return Cuanto espacio de la capacidad se encuentra ocupado.
 	 */
-	public Double getOcupacion() {
+	public double getOcupacion() {
 		return ocupacion;
 	}
 
@@ -108,37 +113,40 @@ public class Bodega implements VOBodega{
 	public void setTipoProducto(String tipoProducto) {
 		this.tipoProducto = tipoProducto;
 	}
+	/**
+	 * @return the dirSucursal
+	 */
+	public String getDirSucursal() {
+		return dirSucursal;
+	}
+
+	/**
+	 * @param dirSucursal the dirSucursal to set
+	 */
+	public void setDirSucursal(String dirSucursal) {
+		this.dirSucursal = dirSucursal;
+	}
 	
 	/**
-	 * @return Los productos guardados en la bodega.
+	 * @return the ciudadSucursal
 	 */
-	public List<Producto> getProductos() {
-		return productos;
+	public String getCiudadSucursal() {
+		return ciudadSucursal;
 	}
-	
-    public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+
+	/**
+	 * @param ciudadSucursal the ciudadSucursal to set
+	 */
+	public void setCiudadSucursal(String ciudadSucursal) {
+		this.ciudadSucursal = ciudadSucursal;
 	}
-    
+
 	@Override
 	/**
 	 * @return Una cadena de caracteres con todos los atributos de la bodega.
 	 */
 	public String toString() {
-		return "Bodega [id=" + id + ", capacidad=" + capacidad + ", ocupacion=" + ocupacion + ", tipoProducto=" + tipoProducto + "]";
-	}
-	
-	/**
-	 * @return Una cadena de caracteres con todos los atributos de la bodega.
-	 */
-	public String toStringCompleto() {
-		String resp = this.toString();
-		resp += "\n --- Productos\n";
-		for (Producto producto : productos)
-		{
-			resp += producto.toString() + "\n";
-		}
-		return resp;
+		return "Bodega [id=" + id + ", capacidad=" + capacidad + ", ocupacion=" + ocupacion + ", tipoProducto=" + tipoProducto + ", dirSucursal" + dirSucursal + "]";
 	}
 
 }

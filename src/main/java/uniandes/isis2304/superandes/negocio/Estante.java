@@ -1,9 +1,6 @@
 package uniandes.isis2304.superandes.negocio;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Estante {
+public class Estante implements VOEstante{
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
@@ -28,9 +25,14 @@ public class Estante {
 	private String tipoProducto;
 	
 	/**
-	 * El tipo de producto que se almacena en este estante.
+	 *  El id de la sucursal asignada a la orden.
 	 */
-	private List<Producto> productos;
+	private String dirSucursal;
+	
+	/**
+	 *  El id de la sucursal asignada a la orden.
+	 */
+	private String ciudadSucursal;
 
 
 	/* ****************************************************************
@@ -41,11 +43,12 @@ public class Estante {
      */
 	public Estante() 
     {
-    	this.id = 0;
+    		this.id = 0;
 		this.capacidad = 0;
 		this.ocupacion = 0;
 		this.tipoProducto = "";
-		this.productos = new ArrayList<Producto>();
+		this.dirSucursal = "";
+		this.ciudadSucursal = "";
 	}
 	
 	/**
@@ -54,14 +57,16 @@ public class Estante {
 	 * @param capacidad - La capacidad en peso del estante.
 	 * @param ocupacion - Cuanto espacio de la capacidad total se encuentra ocupado.
 	 * @param tipoProducto - El tipo de producto que se almacena en el estante.
+	 * @param dirSucursal - La direccion de la sucursal a la que pertenece el estante.
 	 */
-    public Estante(long id, Double capacidad, Double ocupacion, String tipoProducto, List<Producto> productos) 
+    public Estante(long id, Double capacidad, Double ocupacion, String tipoProducto, String dirSucursal) 
     {
     		this.id = id;
 		this.capacidad = capacidad;
 		this.ocupacion = ocupacion;
 		this.tipoProducto = tipoProducto;
-		this.productos = productos;
+		this.dirSucursal = dirSucursal;
+		this.ciudadSucursal = "";
 	}
     
 
@@ -79,7 +84,7 @@ public class Estante {
     /**
 	 * @return La capacidad del estante en peso.
 	 */
-	public Double getCapacidad() {
+	public double getCapacidad() {
 		return capacidad;
 	}
 
@@ -90,7 +95,7 @@ public class Estante {
 	/**
 	 * @return Cuanto espacio de la capacidad se encuentra ocupado.
 	 */
-	public Double getOcupacion() {
+	public double getOcupacion() {
 		return ocupacion;
 	}
 
@@ -110,34 +115,41 @@ public class Estante {
 	}
 	
 	/**
-	 * @return Los productos guardados en el estante.
+	 * @return the dirSucursal
 	 */
-	public List<Producto> getProductos() {
-		return productos;
+	public String getDirSucursal() {
+		return dirSucursal;
+	}
+
+	/**
+	 * @param dirSucursal the dirSucursal to set
+	 */
+	public void setDirSucursal(String dirSucursal) {
+		this.dirSucursal = dirSucursal;
 	}
 	
-    public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+	
+	
+	/**
+	 * @return the ciudadSucursal
+	 */
+	public String getCiudadSucursal() {
+		return ciudadSucursal;
 	}
-    
+
+	/**
+	 * @param ciudadSucursal the ciudadSucursal to set
+	 */
+	public void setCiudadSucursal(String ciudadSucursal) {
+		this.ciudadSucursal = ciudadSucursal;
+	}
+
 	@Override
 	/**
 	 * @return Una cadena de caracteres con todos los atributos de la bodega.
 	 */
 	public String toString() {
-		return "Estante [id=" + id + ", capacidad=" + capacidad + ", ocupacion=" + ocupacion + ", tipoProducto=" + tipoProducto + "]";
+		return "Estante [id=" + id + ", capacidad=" + capacidad + ", ocupacion=" + ocupacion + ", tipoProducto=" + tipoProducto + ", dirSucursal" + dirSucursal + "]";
 	}
-	
-	/**
-	 * @return Una cadena de caracteres con todos los atributos de la bodega.
-	 */
-	public String toStringCompleto() {
-		String resp = this.toString();
-		resp += "\n --- Productos\n";
-		for (Producto producto : productos)
-		{
-			resp += producto.toString() + "\n";
-		}
-		return resp;
-	}
+
 }

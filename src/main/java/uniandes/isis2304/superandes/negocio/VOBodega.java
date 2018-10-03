@@ -1,7 +1,5 @@
 package uniandes.isis2304.superandes.negocio;
 
-import java.util.List;
-
 public interface VOBodega {
 	/* ****************************************************************
 	 * 			Métodos 
@@ -14,22 +12,27 @@ public interface VOBodega {
      /**
 	 * @return La capacidad de la bodega en peso.
 	 */
-	public Double getCapacidad();
+	public double getCapacidad();
 	
 	/**
 	 * @return Cuanto espacio de la capacidad se encuentra ocupado.
 	 */
-	public Double getOcupacion();
+	public double getOcupacion();
 	
 	/**
 	 * @return El tipo de producto que se almacena en esta bodega.
 	 */
 	public String getTipoProducto();
-
+	
 	/**
-	 * @return Los productos.
+	 * @return the dirSucursal
 	 */
-	public List<Producto> getProductos();
+	public String getDirSucursal();
+	
+	/**
+	 * @return the ciudadSucursal
+	 */
+	public String getCiudadSucursal();
 	
 	@Override
 	/**
